@@ -14,4 +14,4 @@ optional arguments: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -p PASSWORD, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --password PASSWORD &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password for login <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -f FORMAT, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --format FORMAT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format data <br>
 
-Example: ```python .\match_ids.py --days 1 --email 'chiru.leonard@gmail.com' --password 'Leopard1986@' --format 'json'```
+Example: ```python .\match_ids.py --days 1 --email 'example@email.com' --password 'PASSWORD' --format 'json'```

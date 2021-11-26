@@ -88,5 +88,5 @@ path = '/mnt/ftp/public/' + x_days.strftime('%Y-%m-%d') + '_' + args.format + '.
 df = pd.DataFrame(data)
 df.to_csv(path)
 
-# Close browser session
+# Closes the current window
 driver.close()
