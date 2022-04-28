@@ -7,7 +7,7 @@ import argparse
 
 import datetime
 import pandas as pd
-import os.path
+import os
 import re
 import time
 
@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser(description='Script to get all match IDs for a 
 parser.add_argument('--days', '-d', type=int, required=True, help='Number of days before, no more than =< 8 days')
 parser.add_argument('--email', '-e', type=str, required=True, help='Email for login')
 parser.add_argument('--password', '-p', type=str, required=True, help='Password for login')
-parser.add_argument('--format', '-f', type=str, required=True, help='Format data')
+#parser.add_argument('--format', '-f', type=str, required=True, help='Format data')
 
 args = parser.parse_args()
 print(args.days, args.email, args.password)
@@ -37,7 +37,7 @@ time.sleep(5)
 driver.find_element_by_id('onetrust-accept-btn-handler').click()
 
 # Find Login button and make a click action
-driver.find_element_by_id('signIn').click()
+driver.find_element_by_xpath('//*[@id="user-menu"]/span').click()
 time.sleep(5)
 # Input username and password
 driver.find_element_by_id('email').send_keys(args.email)
@@ -48,7 +48,7 @@ time.sleep(10)
 
 # Make a click to X days back (No more than =< 8 days)
 for d in range(args.days):
-    driver.find_element_by_xpath('//*[@id="live-table"]/div[1]/div[2]/div[1]/div').click()
+    driver.find_element_by_xpath('//*[@id="live-table"]/div[1]/div[2]/div/div[1]').click()
     time.sleep(5)
 
 # Store code page
@@ -80,8 +80,11 @@ for m in matches:
 #current_date = datetime.datetime.now()
 #path = os.path.expanduser("~") + '\Desktop\\' + str(current_date.strftime('%Y-%m-%d')) + args.format +'.csv'
 
+#x_days = datetime.datetime.now() - datetime.timedelta(days=args.days)
+#path = '/mnt/ftp/public/' + x_days.strftime('%Y-%m-%d') + '_' + args.format + '.csv'
+
 x_days = datetime.datetime.now() - datetime.timedelta(days=args.days)
-path = '/mnt/ftp/public/' + x_days.strftime('%Y-%m-%d') + '_' + args.format + '.csv'
+path = os.getcwd() + '\\'+ x_days.strftime('%Y-%m-%d') + '.csv'
 
 df = pd.DataFrame(data)
 df.to_csv(path)
